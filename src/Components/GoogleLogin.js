@@ -29,7 +29,6 @@ const GoogleLogin = () => {
                 console.log(error);
             });
     }
-
     // sign out
     const handleSignOut = () => {
         const auth = getAuth();
