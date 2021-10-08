@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { firebaseInitialize } from '../firebasee/firebase-initialize';
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signOut } from "firebase/auth";
 
 firebaseInitialize();
 
 const AllAuthentications = () => {
     // logged in user info store
     const [user, setUser] = useState({});
+    const auth = getAuth();
 
     // all code for google signIn (its stored on firebase)------------------------------
     const handleGoogleSignIn = () => {
@@ -50,6 +51,25 @@ const AllAuthentications = () => {
             });
     }
 
+    // handle facebook sign in --------------------------------------------------------------
+    const handleFacebookLogin = () => {
+        const provider = new FacebookAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const { displayName, email, photoURL } = result.user;
+                const loggedInUser = {
+                    name: displayName,
+                    email: email,
+                    photo: photoURL
+                }
+                setUser(loggedInUser);
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     // sign out---------------------------------------------------------
     const handleSignOut = () => {
         const auth = getAuth();
@@ -70,6 +90,7 @@ const AllAuthentications = () => {
                     <div>
                         <button onClick={handleGoogleSignIn}>Google Login</button>
                         <button onClick={handleGitHubLogin}>github login</button>
+                        <button onClick={handleFacebookLogin}>facebook signin</button>
                     </div>
                     :
                     <button onClick={handleSignOut}>google signOut</button>
