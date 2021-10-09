@@ -12,21 +12,25 @@ const EmailSignInSingUp = () => {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        if (password.length < 6) {
-            setErrorMessage('Password should be at least 6 characters');
-            return;
-        }
-        if (!/(?=.*[A-Z])(?=.*?[0-9])/.test(password)) {
-            setErrorMessage('Password give one give latter and one numeric number');
-            return;
-        }
+        // if (password.length < 6) {
+        //     setErrorMessage('Password should be at least 6 characters');
+        //     return;
+        // }
+        // if (!/(?=.*[A-Z])(?=.*?[0-9])/.test(password)) {
+        //     setErrorMessage('Password give one give latter and one numeric number');
+        //     return;
+        // }
 
-        isLogin ? processUser(email, password) : createNewUser(email, password);
+        // isLogin ? processUser(email, password) : createNewUser(email, password);
+
+        
 
     };
 
     //create a new user for register-------------------------------------------------------
-    const createNewUser = (email, password) => {
+    const createNewUser = (e) => {
+        e.preventDefault();
+        
         console.log('create user callled');
         createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
@@ -104,7 +108,7 @@ const EmailSignInSingUp = () => {
     return (
         <div className="container">
             <h1 className="text-center text-primary">{isLogin ? 'login' : 'register'}</h1>
-            <form onSubmit={handleRegister}>
+            <form onSubmit={createNewUser}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input onBlur={handleEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />

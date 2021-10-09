@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: black;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+.header a {
+    color: oldlace;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.header a:hover{
+    color: chartreuse;
+}
+.header button{
+    background-color: blue;
+    color: white;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: .5rem;
+}

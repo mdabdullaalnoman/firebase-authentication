@@ -6,7 +6,7 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { FaGoogle } from "@react-icons/all-files/fa/FaGoogle";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 
-const Form = () => {
+const Register = () => {
     return (
         <div className="form-warp">
             <div className="form-container">
@@ -51,4 +51,4 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default Register;
